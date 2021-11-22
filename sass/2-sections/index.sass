@@ -1,0 +1,1298 @@
+@import '../0-utilities/_base.sass'
+@import '../0-utilities/_functions.sass'
+@import '../0-utilities/_utilities.sass'
+@import '../0-utilities/_variables.sass'
+
+// media queries have an added 17px to take into account the chrome scrollbar
+
+@keyframes findUsIcon
+  from
+    transform: rotate(0deg)
+  to
+    transform: rotate(360deg)
+
+.nav
+  @extend %padding
+
+  display: flex
+  align-items: center
+  justify-content: space-between
+  height: rem(50)
+  padding-top: rem(10)
+  padding-bottom: rem(10)
+  background: $blue
+
+  @media (min-width: $large)
+    height: rem(60)
+
+  &__logo
+    font:
+      family: $primary
+      weight: 400
+      size: rem(20)
+    color: $white
+
+    @media (min-width: $large)
+      font-size: rem(30)
+
+  &__menu
+    &__hamburger
+      position: relative
+      // display: flex
+      // align-items: center
+      // justify-content: space-between
+      // flex-direction: column
+      width: 2rem
+      aspect-ratio: 1
+      background-color: $white
+      mask:
+        image: url("hamburger.svg")
+        repeat: no-repeat
+        position: center center
+      z-index: 1
+
+      border: none
+
+      // &__line
+      //   display: block
+      //   width: 2.5rem
+      //   height: .3125rem
+      //   background: $white
+
+      //   border-radius: rem(10)
+
+      @media (min-width: $large)
+        display: none
+
+    &__hamburger[aria-expanded="true"]
+      background-color: $white
+      mask:
+        image: url("close.svg")
+        repeat: no-repeat
+        position: center center
+
+    &__links
+      // display: none
+
+      &__list
+
+        @media (min-width: $large)
+          display: flex
+          gap: rem(20)
+
+        @media (max-width: 65em) // ($large - 1)
+          display: flex
+          position: fixed
+          align-items: center
+          justify-content: center
+          flex-direction: column
+          gap: rem(20)
+          inset: 0 0 0 30%
+          background: $blue
+          transition: transform .3s ease-out
+          transform: translateX(100%)
+
+        li
+          list-style: none
+
+        &__link
+          font:
+            family: $secondary
+            size: rem(20)
+          text:
+            decoration: none
+            transform: uppercase
+          color: #C9C9C9
+
+          &:not(:nth-child(1))
+            margin-left: rem(20)
+
+            @media (max-width: 65em) // ($large - 1)
+              margin-left: 0
+
+          @media (max-width: 65em) // ($large - 1)
+            font-size: rem(30)
+            color: $white
+
+      &__list[data-visible="true"]
+        @media (max-width: 65em) // ($large - 1)
+          transform: translateX(0%)
+
+.landing
+  @extend %padding
+
+  display: flex
+  flex-direction: column
+  align-items: center
+  margin-top: rem(40)
+
+  &__photo
+    width: rem(280)
+    
+    @media (min-width: $medium)
+      width: rem(320)
+
+    @media (min-width: $large)
+      width: rem(500)
+
+  &__header
+    margin-top: rem(20)
+
+    font:
+      family: $primary
+      weight: 400
+      size: rem(25)
+    color: $veryDarkBlue
+    text-align: center
+
+    @media (min-width: $large)
+      font-size: rem(40)
+  
+  &__description
+    margin-top: rem(10)
+
+    font:
+      family: $secondary
+      size: rem(15)
+      weight: 400
+      style: italic
+    color: $veryDarkBlue
+    text-align: center
+
+    @media (min-width: $large)
+      font-size: rem(20)
+
+  &__cta
+    width: rem(150)
+    height: rem(30)
+    margin-top: rem(20)
+    background: $yellow
+    
+    font:
+      family: $secondary
+      size: rem(15)
+
+    border: none
+      radius: rem(10)
+    box-shadow: $buttonShadow
+
+    @media (min-width: $large)
+      width: rem(280)
+      height: rem(50)
+      margin-top: rem(30)
+      
+      font-size: rem(25)
+
+      transition: background 0.3s ease
+      cursor: pointer
+
+      &:hover
+        background: $blue
+        
+        color: $white
+
+  &__link
+    margin-top: rem(10)
+
+    font:
+      family: $tertiary
+      style: italic
+      size: rem(15)
+    text:
+      decoration: none
+      align: center
+    color: $blue
+
+    @media (min-width: $large)
+      font-size: rem(20)
+
+      &:hover
+        text-decoration: underline
+
+.cards
+  @extend %padding
+
+  display: flex
+  flex-direction: column
+  align-items: center
+  margin-top: rem(40)
+
+  @media (min-width: $large)
+    margin-top: rem(60)
+
+  &__card
+    display: grid
+    grid-template-rows: repeat(4, 1fr)
+    grid-template-columns: repeat(2, 1fr)
+    grid-template-areas: "ratio logo" "header header" "description description" "category ."
+    width: rem(280)
+    height: rem(160)
+    padding: rem(10) rem(20)
+    background: $veryDarkBlue
+    
+    color: $white
+
+    border-radius: rem(15)
+    box-shadow: $divShadow
+
+    @media (min-width: 26.0625em)
+      width: rem(340)
+      height: rem(200)
+
+    @media (min-width: $large)
+      width: rem(560)
+      height: rem(300)
+
+    &:not(:nth-child(1))
+      margin-top: rem(20)
+
+      @media (min-width: $large)
+        margin-top: rem(60)
+
+    &__ratio
+      grid-area: ratio
+
+      font:
+        family: $secondary
+        weight: 400
+        size: rem(12)
+
+      @media (min-width: 26.0625em)
+        font-size: rem(18)
+
+      @media (min-width: $large)
+        font-size: rem(30)
+
+    &__logo
+      grid-area: logo
+      justify-self: end
+      align-self: start
+      width: rem(25)
+
+      @media (min-width: 26.0625em)
+        width: rem(35)
+      
+      @media (min-width: $large)
+        width: rem(50)
+
+    &__header
+      grid-area: header
+      justify-self: center
+      align-self: end
+
+      font:
+        family: $primary
+        weight: 400
+        size: rem(12)
+
+      @media (min-width: 26.0625em)
+        font-size: rem(18)
+
+      @media (min-width: $large)
+        font-size: rem(30)
+    
+    &__description
+      grid-area: description
+      justify-self: center
+      margin-top: rem(5)
+
+      font:
+        family: $secondary
+        style: italic
+        size: rem(10)
+      text-decoration: none
+      color: $white
+
+      @media (min-width: 26.0625em)
+        font-size: rem(12)
+
+      @media (min-width: $large)
+        font-size: rem(20)
+
+        &:hover
+          text-decoration: underline
+
+    &__category
+      grid-area: category
+      align-self: end
+
+      font:
+        family: $secondary
+        weight: 400
+        size: rem(10)
+
+      @media (min-width: 26.0625em)
+        font-size: rem(12)
+
+      @media (min-width: $large)
+        font-size: rem(20)
+  
+  &__mastercard
+    background: $veryDarkBlue
+
+    @media (min-width: $large)
+      align-self: flex-start
+
+  &__citi
+    background: $blue
+
+  &__visa
+    background: $yellow
+    
+    color: $veryDarkBlue
+
+    @media (min-width: $large)
+      align-self: flex-end
+
+    .cards__card__description
+      color: $veryDarkBlue
+
+.choose-us
+  @extend %padding
+
+  margin-top: rem(60)
+
+  @media (min-width: $xlarge)
+    padding-left: rem(180)
+    padding-right: rem(180)
+  
+  &__header
+    font:
+      family: $primary
+      weight: 700
+      size: rem(20)
+    color: $veryDarkBlue
+    text-align: center
+
+    @media (min-width: $medium)
+      font-size: rem(25)
+
+    @media (min-width: $large)
+      font-size: rem(30)
+
+  &__category
+    margin-top: rem(30)
+
+    @media (min-width: $medium)
+      margin-top: rem(50)
+
+    &__label
+      font:
+        family: $secondary
+        weight: 700
+        size: rem(18)
+      color: $blue
+
+      @media (min-width: $medium)
+        font-size: rem(22)
+
+      @media (min-width: $large)
+        font-size: rem(25)
+
+      &::after
+        content: ''
+        display: block
+        width: rem(30)
+        height: rem(3)
+        background: $yellow
+
+        @media (min-width: $medium)
+          width: rem(40)
+
+        @media (min-width: $large)
+          width: rem(50)
+      
+    &:nth-child(3)
+      @media (min-width: $medium)
+        .choose-us__category__label::after
+          margin-left: auto
+
+    &__body
+      margin-top: rem(10)
+
+      font:
+        family: $secondary
+        weight: 400
+        size: rem(12)
+      color: $veryDarkBlue
+
+      @media (min-width: $medium)
+        font-size: rem(18)
+
+      @media (min-width: $large)
+        font-size: rem(20)
+
+  &--inclusivity
+    @media (min-width: $medium)
+      text-align: right
+
+.blog
+  @extend %padding
+
+  display: flex
+  align-items: center
+  flex-direction: column
+  padding-top: rem(20)
+  padding-bottom: rem(20)
+  margin-top: rem(60)
+  background: $white
+
+  @media (min-width: $large)
+    flex-direction: row
+    flex-wrap: wrap
+    justify-content: center
+    gap: 0 rem(30)
+    padding-top: rem(40)
+    padding-bottom: rem(40)
+
+  @media (min-width: $xlarge)
+    gap: 0 rem(40)
+
+  &__header
+    font:
+      family: $primary
+      weight: 700
+      size: rem(20)
+    color: $veryDarkBlue
+
+    @media (min-width: $medium)
+      font-size: rem(25)
+
+    @media (min-width: $large)
+      flex-basis: 100%
+      margin-bottom: rem(20)
+
+      text-align: center
+      font-size: rem(30)
+
+  &__article
+    width: rem(280)
+    height: rem(280)
+    background: $veryDarkBlue
+
+    border-radius: rem(10)
+    overflow: hidden
+
+    @media (min-width: 26.0625em)
+      width: rem(340)
+      height: rem(340)
+
+    @media (min-width: $large)
+      width: rem(280)
+    
+    @media (min-width: $xlarge)
+      width: rem(380)
+      height: rem(360)
+
+    &:not(:nth-child(2))
+      margin-top: rem(20)
+    
+    &:nth-child(2)
+      margin-top: rem(40)
+
+      @media (min-width: $large)
+        margin-top: rem(20)
+    
+    &__image
+      width: rem(280)
+      height: rem(120)
+      object-fit: cover
+
+      @media (min-width: 26.0625em)
+        width: rem(340)
+        height: rem(160)
+      
+      @media (min-width: $large)
+        width: rem(280)
+
+      @media (min-width: $xlarge)
+        width: rem(380)
+        height: rem(180)
+
+    &--first-image
+      object-position: 0 -100px
+
+      @media (min-width: 26.0625em)
+        object-position: 0 -140px
+
+    // &--second-image
+    //   background: url('robots.jpg') no-repeat
+    //     position: right 0 bottom -3.125rem
+    //     size: cover
+
+    // &--third-image
+    //   background: url('coronavirus.jpg') no-repeat
+    //     position: right 0 bottom -2.5rem
+    //     size: cover
+
+    &__content
+      display: flex
+      flex-direction: column
+      height: calc(100% - 120px)
+      padding: rem(10)
+
+      @media (min-width: 26.0625em)
+        height: calc(100% - 160px)
+
+      @media (min-width: $xlarge)
+        height: calc(100% - 180px)
+
+      &__date
+        font:
+          family: $tertiary
+          style: italic
+          size: rem(10)
+        color: $gray
+
+        @media (min-width: 26.0625em)
+          font-size: rem(12)
+
+      &__title
+        margin-top: rem(10)
+
+        font:
+          family: $primary
+          weight: 700
+          size: rem(15)
+        color: $white
+
+        @media (min-width: 26.0625em)
+          font-size: rem(18)
+
+      &__body
+        margin-top: rem(10)
+
+        font:
+          family: $secondary
+          weight: 400
+          size: rem(10)
+        color: darken($white, 15%)
+
+        @media (min-width: 26.0625em)
+          font-size: rem(12)
+
+      &__read
+        align-self: flex-end
+        margin-top: auto
+        background: none
+
+        border: none
+
+        &__bullet
+          font:
+            size: rem(30)
+          color: $yellow
+
+          cursor: pointer
+  
+.banner
+  @extend %padding
+
+  display: flex
+  // flex-direction: column
+  align-items: center
+  justify-content: center
+  min-height: 2.5rem
+  padding-top: rem(20)
+  padding-bottom: rem(20)
+  background: $blue
+
+  cursor: pointer
+
+  &__text
+    text:
+      decoration: none
+      align: center
+
+    &__content
+      font:
+        family: $primary
+        size: rem(15)
+      color: $white
+
+      @media (min-width: $large)
+        font-size: rem(20)
+
+    &__question
+      display: none
+      
+      @media (min-width: $large)
+        display: inline
+
+.more-information
+  @extend %padding
+
+  margin-top: rem(60)
+
+  @media (min-width: $xlarge)
+    display: flex
+    flex-wrap: wrap
+    gap: rem(60)
+
+  &__privacy
+    display: flex
+    flex-wrap: wrap
+    min-height: rem(340)
+    background: $white
+
+    border-radius: rem(5)
+    box-shadow: $divShadow
+
+    @media (min-width: $large)
+      flex-wrap: nowrap
+      max-height: rem(340)
+
+    @media (min-width: $xlarge)
+      width: 65%
+
+    &__photo
+      flex-basis: 100%
+      height: rem(190)
+      object-fit: cover
+
+      border-top-left-radius: rem(5)
+      border-top-right-radius: rem(5)
+
+      @media (min-width: $medium)
+        height: rem(300)
+
+      @media (min-width: $large)
+        flex-basis: 0
+        order: 1
+        height: rem(340)
+        object-fit: cover
+
+        border-top-left-radius: 0
+        border-bottom-right-radius: rem(5)
+
+      @media (min-width: $xlarge)
+        width: rem(350)
+        object-fit: cover
+      
+    &__text
+      text-align: center
+      padding: rem(20)
+
+      @media (min-width: $large)
+        text-align: left
+
+      &__title
+        font:
+          family: $primary
+          weight: 700
+          size: rem(15)
+        color: $veryDarkBlue
+
+        @media (min-width: $medium)
+          font-size: rem(20)
+
+        @media (min-width: $large)
+          font-size: rem(25)
+
+      &__body
+        margin-top: rem(10)
+
+        font:
+          family: $secondary
+          weight: 400
+          size: rem(10)
+        color: darken($gray, 30%)
+
+        @media (min-width: $medium)
+          font-size: rem(15)
+
+        @media (min-width: $large)
+          font-size: rem(20)
+
+      &__cta
+        width: rem(80)
+        height: rem(30)
+        margin-top: rem(10)
+        background: $yellow
+
+        font:
+          family: $secondary
+          weight: 400
+          size: rem(10)
+        color: $veryDarkBlue
+
+        border: none
+          radius: rem(10)
+        box-shadow: $buttonShadow
+
+        @media (min-width: $medium)
+          width: rem(140)
+          height: rem(40)
+          margin-top: rem(30)
+
+          font-size: rem(15)
+
+        @media (min-width: $large)
+          width: rem(180)
+          height: rem(50)
+          font-size: rem(20)
+
+          transition: background .3s ease
+          cursor: pointer
+
+          &:hover
+            background: $blue
+            color: $white
+
+  &__find-us
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-direction: column
+    min-height: rem(340)
+    gap: rem(20)
+    margin-top: rem(20)
+    background: linear-gradient(rgba(24, 90, 219, .5), rgba(24, 90, 219, .5)), url('findus.jpg')
+      size: cover
+
+    border-radius: rem(5)
+    box-shadow: $divShadow
+
+    @media (min-width: $large)
+      cursor: pointer
+
+      &:hover
+        .more-information__find-us__icon
+          animation: findUsIcon 4s linear infinite alternate
+
+    @media (min-width: $xlarge)
+      flex-grow: 1
+      margin-top: 0
+
+    &__title
+      font:
+        family: $primary
+        weight: 700
+        size: rem(20)
+      color: $white
+
+      @media (min-width: $medium)
+        font-size: rem(30)
+
+    &__icon
+      width: rem(80)
+      filter: invert(99%) sepia(1%) saturate(2450%) hue-rotate(191deg) brightness(116%) contrast(87%)
+
+      @media (min-width: $medium)
+        width: rem(100)
+
+  &__press
+    display: flex
+    flex-direction: column
+    margin-top: rem(20)
+    padding: rem(20)
+    background: $white
+
+    border-radius: rem(5)
+    box-shadow: $divShadow
+
+    @media (min-width: $xlarge)
+      flex-basis: 100%
+      margin-top: 0
+
+    &__title
+      font:
+        family: $primary
+        weight: 700
+        size: rem(20)
+      color: $veryDarkBlue
+
+      @media (min-width: $large)
+        font-size: rem(25)
+
+      &::after
+        content: ''
+        display: block
+        width: 100%
+        height: rem(2)
+        margin: rem(10) 0 0
+        background: $gray
+    
+    &__link
+      margin-top: rem(20)
+
+      font:
+        family: $secondary
+        size: rem(15)
+      text-decoration: none
+      color: $blue
+
+      @media (min-width: $large)
+        font-size: rem(20)
+
+      &__date
+        display: block
+
+        font:
+          family: $tertiary
+          style: italic
+          size: rem(15)
+        color: $gray
+
+        @media (min-width: $large)
+          font-size: rem(20)
+
+.about-us
+  @extend %padding
+  
+  margin-top: rem(60)
+
+  @media (min-width: $large)
+    display: flex
+    flex-wrap: wrap
+
+    gap: 10%
+
+  &__part
+    display: flex
+    justify-content: flex-end
+    flex-direction: column
+    gap: rem(10)
+    width: 100%
+    height: rem(400)
+    padding: rem(20)
+
+    border-radius: rem(5)
+
+    @media (min-width: $large)
+      width: 45%
+      height: rem(600)
+
+    &:not(:first-child)
+      margin-top: rem(20)
+
+    &__title
+      font:
+        family: $secondary
+        weight: 400
+        size: rem(15)
+      color: $gray
+
+      @media (min-width: $large)
+        font-size: rem(20)
+
+    &__description
+      font:
+        family: $primary
+        weight: 400
+        size: rem(20)
+      color: $white
+
+      @media (min-width: $large)
+        font-size: rem(25)
+
+    &__link
+      font:
+        family: $tertiary
+        weight: 400
+        style: italic
+        size: rem(15)
+      text-decoration: none
+      color: $yellow
+
+      @media (min-width: $large)
+        font-size: rem(20)
+
+        cursor: pointer
+
+        &:hover
+          text-decoration: underline
+
+  &--world
+    background: linear-gradient(rgba(10, 25, 49, .5), rgba(10, 25, 49, .5)), url('traveled.jpg')
+      size: cover
+
+    @media (min-width: 30.75em)
+      background-position: center center
+
+  &--pandemic
+    background: linear-gradient(rgba(10, 25, 49, .5), rgba(10, 25, 49, .5)), url('coronavirus2.jpg')
+      size: cover
+      position: center center
+
+    @media (min-width: $large)
+      margin-top: 0 !important
+
+  &--connections
+    background: linear-gradient(rgba(10, 25, 49, .5), rgba(10, 25, 49, .5)), url('connections.jpg')
+      size: cover
+
+    @media (min-width: $large)
+      flex-basis: 100%
+
+    @media (min-width: $xlarge)
+      background-position: center center
+
+.right-card
+  @extend %padding
+
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  margin-top: rem(60)
+  padding-top: rem(80)
+  padding-bottom: rem(80)
+  background: $blue
+
+  @media (min-width: $large)
+    flex-direction: row
+    justify-content: space-between
+
+  @media (min-width: $xlarge)
+    justify-content: center
+    gap: rem(100)
+
+  &__icon
+    width: rem(220)
+    margin-right: rem(20)
+
+    transform: rotate(-35deg)
+    filter: invert(100%) sepia(3%) saturate(960%) hue-rotate(198deg) brightness(117%) contrast(87%)
+
+    @media (min-width: $medium)
+      width: rem(280)
+
+    @media (min-width: $large)
+      order: 1
+      margin-right: rem(70)
+
+    @media (min-width: 76.0625em)
+      width: rem(360)
+
+  &__text-and-button
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    gap: rem(30)
+    margin-top: rem(20)
+
+    @media (min-width: $large)
+      align-items: flex-start
+      gap: rem(20)
+
+    &__title
+      font:
+        family: $primary
+        weight: 700
+        size: rem(22)
+      color: $white
+
+      @media (min-width: $medium)
+        font-size: rem(30)
+
+      @media (min-width: $large)
+        font-size: rem(40)
+
+    &__cta
+      width: rem(120)
+      height: rem(40)
+      background: $yellow
+
+      font:
+        family: $secondary
+        size: rem(15)
+      color: $veryDarkBlue
+
+      border: none
+        radius: rem(10)
+      box-shadow: $buttonShadow
+
+      @media (min-width: $medium)
+        width: rem(200)
+        height: rem(50)
+
+        font-size: rem(25)
+
+      @media (min-width: $large)
+        width: rem(240)
+        height: rem(60)
+
+        font-size: rem(30)
+        
+        cursor: pointer
+        transition: background .3s ease
+
+        &:hover
+          background: darken($yellow, 10%)
+
+.contactless
+  @extend %padding
+
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  min-height: rem(350)
+  padding-top: rem(20)
+  padding-bottom: rem(20)
+  background: linear-gradient(.25turn, rgba(10, 25, 49, .3), rgba(20, 33, 61, .8)), url('contactless.jpg')
+    size: cover
+
+  @media (min-width: $medium)
+    align-items: flex-end
+    justify-content: center
+    min-height: rem(450)
+
+  @media (min-width: $large)
+    min-height: rem(600)
+
+  &__title
+    font:
+      family: $primary
+      weight: 700
+      size: rem(20)
+    color: $white
+
+    @media (min-width: $medium)
+      font-size: rem(30)
+
+    @media (min-width: $large)
+      font-size: rem(40)
+
+  &__description
+    margin-top: rem(10)
+
+    font:
+      family: $secondary
+      style: italic
+      size: rem(15)
+    text-align: center
+    color: darken($white, 5%)
+
+    @media (min-width: $medium)
+      text-align: right
+      font-size: rem(25)
+
+    @media (min-width: $large)
+      font-size: rem(30)
+
+  &__cta
+    width: rem(160)
+    height: rem(40)
+    margin-top: rem(20)
+    background: $blue
+    
+    font:
+      family: $secondary
+      size: rem(15)
+    color: $white
+
+    box-shadow: $buttonShadow
+    border: none
+      radius: rem(10)
+
+    @media (min-width: $medium)
+      width: rem(220)
+      height: rem(50)
+
+      font-size: rem(20)
+
+    @media (min-width: $large)
+      width: rem(300)
+      height: rem(60)
+
+      font-size: rem(30)
+
+      transition: background .3s ease
+      cursor: pointer
+
+      &:hover
+        background: $yellow
+        
+        color: $veryDarkBlue
+
+.summary
+  @extend %padding
+
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  margin-top: rem(40)
+
+  @media (min-width: $medium)
+    margin-top: rem(60)
+
+  &__title
+    font:
+      family: $primary
+      weight: 700
+      size: rem(25)
+    text-align: center
+    color: $veryDarkBlue
+
+    @media (min-width: $medium)
+      font-size: rem(30)
+
+    @media (min-width: $large)
+      font-size: rem(40)
+
+  &__cta
+    width: rem(240)
+    height: rem(60)
+    margin-top: rem(20)
+    background: $yellow
+
+    font:
+      family: $secondary
+      size: rem(20)
+    color: $veryDarkBlue
+
+    border: none
+      radius: rem(10)
+    box-shadow: $buttonShadow
+
+    @media (min-width: $medium)
+      width: rem(280)
+      height: rem(70)
+
+      font-size: rem(25)
+
+    @media (min-width: $large)
+      width: rem(320)
+      height: rem(80)
+      margin-top: rem(30)
+
+      font-size: rem(30)
+
+      transition: background .3s ease
+      cursor: pointer
+
+      &:hover
+        background: $blue
+
+        color: $white
+
+.footer-content
+  @extend %padding
+
+  margin-top: rem(40)
+  padding-top: rem(20)
+  padding-bottom: rem(20)
+  background: $veryDarkBlue
+
+  @media (min-width: $medium)
+    margin-top: rem(60)
+
+  @media (min-width: $large)
+    display: flex
+    flex-wrap: wrap
+
+  &__logo
+    font:
+      family: $primary
+      weight: 400
+      size: rem(20)
+    color: #505050
+
+    @media (min-width: $large)
+      flex-basis: 100%
+      font-size: rem(30)
+
+    &::after
+      content: ''
+      display: block
+      width: 100%
+      height: rem(2)
+      margin-top: rem(10)
+      background: #505050
+
+  &__block
+    display: flex
+    flex-direction: column
+    margin-top: rem(20)
+
+    @media (min-width: $large)
+      margin-top: rem(40)
+
+    &:not(:nth-of-type(1))
+      margin-top: rem(40)
+      
+      @media (min-width: $large)
+        margin-left: auto
+
+    &__link
+      font:
+        family: $secondary
+        size: rem(20)
+      text-decoration: none
+      color: $white
+
+      @media (min-width: $xlarge)
+        font-size: rem(25)
+
+      &:not(:first-child)
+        margin-top: rem(10)
+
+  &__other-links
+    display: flex
+    flex-direction: column
+    margin-top: rem(40)
+
+    @media (min-width: $large)
+      flex-direction: row
+      flex-basis: 100%
+      flex-wrap: wrap
+      justify-content: center
+
+      gap: 0 rem(10)
+
+    &::after
+      content: ''
+      display: block
+      width: 100%
+      height: rem(2)
+      background: #505050
+      margin-top: rem(20)
+
+    &__link
+      display: inline
+      
+      font:
+        family: $secondary
+        size: rem(15)
+      text-decoration: none
+      color: $gray
+
+      &:not(:first-child)
+        margin-top: rem(5)
+
+        @media (min-width: $large)
+          margin-top: 0
+      
+      @media (min-width: $large)
+        font-size: rem(12)
+
+        &:hover
+          text-decoration: underline
+
+      @media (min-width: $xlarge)
+        font-size: rem(15)
+
+  &__social
+    display: flex
+    justify-content: center
+    gap: rem(10)
+    margin-top: rem(10)
+
+    @media (min-width: $large)
+      width: 100%
+      margin: rem(10) auto 0
+
+    &__icon
+      width: rem(30)
+
+      filter: brightness(0) saturate(100%) invert(100%) sepia(3%) saturate(960%) hue-rotate(198deg) brightness(117%) contrast(87%)
+
+      @media (min-width: $large)
+        cursor: pointer
+
+        &:hover
+          filter: brightness(0) saturate(100%) invert(99%) sepia(93%) saturate(5123%) hue-rotate(318deg) brightness(100%) contrast(101%)

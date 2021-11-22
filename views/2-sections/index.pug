@@ -1,0 +1,231 @@
+html
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width,initial-scale=1")
+    title Creditprint - Home
+    link(href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Nunito:ital,wght@0,400;0,700;1,400&family=PT+Serif:ital@1&display=swap", rel="stylesheet")
+    link(href="index.css", rel="stylesheet")
+  body
+    header
+      nav.nav
+        h1.nav__logo Creditprint
+
+        .nav__menu
+          button(aria-controls="navigation-links", aria-expanded="false").nav__menu__hamburger
+            //- span.nav__menu__hamburger__line
+            //- span.nav__menu__hamburger__line
+            //- span.nav__menu__hamburger__line
+
+          .nav__menu__links
+            ul.nav__menu__links__list#navigation-links(data-visible="false")
+              li
+                a(href="#").nav__menu__links__list__link About
+              li
+                a(href="#").nav__menu__links__list__link Terms
+              li
+                a(href="#").nav__menu__links__list__link Contact
+    
+    main
+      section.landing
+        img(src="credit-card.svg", alt="Landing Photo").landing__photo
+
+        h1.landing__header Ready to shop freely? Creditprint is the way.
+
+        p.landing__description Get started with our one-of-a-kind card, now with fingerprint indentification.
+
+        button.landing__cta Try now
+
+        a(href="#").landing__link &#8594; Learn more about our past
+
+      section.cards
+        .cards__card.cards__mastercard
+          p.cards__card__ratio 0/00
+          img(src="mastercard.svg", alt="Mastercard Logo").cards__card__logo
+          h1.cards__card__header Try our 0% interest credit cards
+          a(href="#").cards__card__description &#8594; Start shopping right away!
+          p.cards__card__category Credit Card
+
+        .cards__card.cards__citi
+          p.cards__card__ratio 24/7
+          img(src="citi.svg", alt="Citi Logo").cards__card__logo
+          h1.cards__card__header Fully-fledged internet banking
+          a(href="#").cards__card__description &#8594; Managing your money has never been easier.
+          p.cards__card__category Internet Banking
+
+        .cards__card.cards__visa
+          p.cards__card__ratio 100/100
+          img(src="visa.svg", alt="Visa Logo").cards__card__logo
+          h1.cards__card__header Investing your money smartly
+          a(href="#").cards__card__description &#8594; Are you in need of a win? Start investing.
+          p.cards__card__category Investitions
+
+      section.choose-us
+        h1.choose-us__header Why you should choose us
+
+        .choose-us__category.choose-us--innovation
+          h3.choose-us__category__label Innovation
+          p.choose-us__category__body We're the first credit card company in the world to introduce artificial intelligence and fingerprint technology. Creditprint is also the first banking service to go fully renewable by 2030.
+
+        .choose-us__category.choose-us--inclusivity
+          h3.choose-us__category__label Inclusivity
+          p.choose-us__category__body As a company, Creditprint's philosophy includes humans of every race, gender and sexual orientation. We're also focused on bringing our services to everyone around the world, regardless of their financial situation. We believe everyone should get equal chances.
+
+        .choose-us__category.choose-us--leaders
+          h3.choose-us__category__label Leaders
+          p.choose-us__category__body Creditprint is the leading banking company in Romania and the biggest credit card middleman in Eastern Europe. Our reputation is represented by the quality of our services.
+
+      section.blog
+        h1.blog__header Creditprint Blog
+
+        .blog__article
+          img(src="future.jpg", alt="First article image").blog__article__image.blog__article--first-image
+
+          .blog__article__content
+            p.blog__article__content__date 05 July 2021
+            h1.blog__article__content__title Investing in your future
+            p.blog__article__content__body It can seem daunting when it comes to investing your money, but it shouldn't be! We've written a full report about how you can multiply your money with very small risks.
+
+            button.blog__article__content__read
+              span.blog__article__content__read__bullet &#8226;
+              span.blog__article__content__read__bullet &#8226;
+              span.blog__article__content__read__bullet &#8226;
+
+        .blog__article
+          img(src="robots.jpg", alt="Second article image").blog__article__image
+
+          .blog__article__content
+            p.blog__article__content__date 26 June 2021
+            h1.blog__article__content__title Creditprint and robots
+            p.blog__article__content__body Embracing new technology is not always easy, but here at Creditprint we're always looking to improve our ways and bring the best services for you.
+
+            button.blog__article__content__read
+              span.blog__article__content__read__bullet &#8226;
+              span.blog__article__content__read__bullet &#8226;
+              span.blog__article__content__read__bullet &#8226;
+
+        .blog__article
+          img(src="coronavirus.jpg", alt="Third article image").blog__article__image
+
+          .blog__article__content
+            p.blog__article__content__date 15 June 2021 
+            h1.blog__article__content__title Understanding the pandemic
+            p.blog__article__content__body We've all suffered during this difficult time, so let's take a moment and try to learn more about Coronavirus and how we can put an end to it.
+
+            button.blog__article__content__read
+              span.blog__article__content__read__bullet &#8226;
+              span.blog__article__content__read__bullet &#8226;
+              span.blog__article__content__read__bullet &#8226;
+
+      section.banner
+        a(href="#").banner__text
+          span.banner__text__content.banner__text__question Have you ever thought how easy it would be to have all your money in one place?
+          span.banner__text__content.banner__text__proposition  Start accumulating your wealth on one debit card &#8594;
+
+      section.more-information
+        .more-information__privacy
+          img(src="privacy.jpeg").more-information__privacy__photo
+
+          .more-information__privacy__text
+            h1.more-information__privacy__text__title Fully private and encrypted
+            p.more-information__privacy__text__body We the people here at Creditprint take your privacy very seriously. That's why our card doesn't save important information without encrypting and making sure it is stored safely.
+            button.more-information__privacy__text__cta Learn more
+
+        .more-information__find-us
+          h1.more-information__find-us__title Find us in your area
+          img(src="compass.svg").more-information__find-us__icon
+
+        .more-information__press
+          h1.more-information__press__title Press releases
+
+          a(href="#").more-information__press__link Creditprint is trying to make the world a better place. Learn how this Romanian start-up is the leading banking organization in the country. &#8594;
+            span.more-information__press__link__date 18 July 2021
+          
+          a(href="#").more-information__press__link Artificial intelligence is the way for credit card companies to offer their customers the best experience. &#8594;
+            span.more-information__press__link__date 06 July 2021
+
+          a(href="#").more-information__press__link How fingerprint indentification has changed the way we think about privacy. Creditprint is the first company to introduce it. &#8594;
+            span.more-information__press__link__date 25 June 2021
+
+      section.about-us
+        .about-us__part.about-us--world
+          h3.about-us__part__title Around the world
+          h1.about-us__part__description We traveled every continent to learn more about our customers. 
+          a(href="#").about-us__part__link &#8594; Our travel plan
+
+        .about-us__part.about-us--pandemic
+          h3.about-us__part__title The pandemic
+          h1.about-us__part__description Learn how our company managed to stay afloat during the Coronavirus craze.
+          a(href="#").about-us__part__link &#8594; Creditprint > Coronavirus 
+
+        .about-us__part.about-us--connections
+          h3.about-us__part__title Connections
+          h1.about-us__part__description Our number one goal was to expand in developing countries so that everyone can be fairly represented.
+          a(href="#").about-us__part__link &#8594; Learn about our project
+
+      section.right-card
+        img(src="shop.svg").right-card__icon
+        
+        .right-card__text-and-button
+          h1.right-card__text-and-button__title Find the right card for you
+          button.right-card__text-and-button__cta Buy a card
+
+      section.contactless
+        h1.contactless__title Going contactless
+
+        p.contactless__description With just one touch you can instantly acquit your day to day payments
+
+        button.contactless__cta More ways to pay
+      
+      section.summary
+        h1.summary__title Happy with the summary?
+
+        button.summary__cta Create an account
+
+    footer
+      .footer-content
+        h1.footer-content__logo Creditprint
+
+        .footer-content__block
+          a(href="#").footer-content__block__link Home
+          a(href="#").footer-content__block__link About Us
+          a(href="#").footer-content__block__link Overview
+          a(href="#").footer-content__block__link Regulatory Disclosures
+
+        .footer-content__block
+          a(href="#").footer-content__block__link Banking, Capital Markets and Advisory
+          a(href="#").footer-content__block__link Commercial Bank
+          a(href="#").footer-content__block__link Markets and Securities Services
+          a(href="#").footer-content__block__link Private Bank
+          a(href="#").footer-content__block__link Treasury and Trade Solutions
+        
+        .footer-content__block
+          a(href="#").footer-content__block__link Home loans
+          a(href="#").footer-content__block__link Auto loans
+          a(href="#").footer-content__block__link Credit cards
+          a(href="#").footer-content__block__link Checking
+          a(href="#").footer-content__block__link Savings
+
+        .footer-content__other-links
+          a(href="#").footer-content__other-links__link Creditprint.com
+          a(href="#").footer-content__other-links__link Terms & Conditions
+          a(href="#").footer-content__other-links__link Privacy
+          a(href="#").footer-content__other-links__link Careers
+          a(href="#").footer-content__other-links__link Contact Us
+          a(href="#").footer-content__other-links__link Business Continuity
+          a(href="#").footer-content__other-links__link ARS Settlement Info
+          a(href="#").footer-content__other-links__link Opening a New Account
+          a(href="#").footer-content__other-links__link Market Conduct Guideline
+
+        .footer-content__social
+          a(href="#")
+            img(src="facebook.svg").footer-content__social__icon
+          a(href="#")
+            img(src="twitter.svg").footer-content__social__icon
+          a(href="#")
+            img(src="youtube.svg").footer-content__social__icon
+          a(href="#")
+            img(src="linkedin.svg").footer-content__social__icon
+          a(href="#")
+            img(src="instagram.svg").footer-content__social__icon
+
+    script(src="index.js")
